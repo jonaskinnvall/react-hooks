@@ -1,14 +1,14 @@
 // useState: greeting
 // http://localhost:3000/isolated/exercise/01.js
 
-import * as React from 'react'
+import React, {useState} from 'react'
 
 function Greeting() {
-  // 💣 delete this variable declaration and replace it with a React.useState call
-  const name = ''
+  const [name, setName] = useState('')
 
   function handleChange(event) {
-    // 🐨 update the name here based on event.target.value
+    event.preventDefault()
+    setName(event.target.value)
   }
 
   return (
