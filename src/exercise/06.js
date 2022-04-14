@@ -12,22 +12,17 @@ import {
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {hasError: false, error: null}
+    this.state = {error: null}
   }
 
   static getDerivedStateFromError(error) {
-    return {hasError: true, error: error}
+    return {error}
   }
 
   render() {
-    const {hasError, error} = this.state
-    if (hasError) {
-      return (
-        <div role="alert">
-          There was an error:{' '}
-          <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
-        </div>
-      )
+    const {error} = this.state
+    if (error) {
+      return <this.props.FallbackComponent error={error} />
     }
     return this.props.children
   }
@@ -57,12 +52,6 @@ function PokemonInfo({pokemonName}) {
 
   if (status === 'rejected') {
     throw error
-    // return (
-    //   <div role="alert">
-    //     There was an error:{' '}
-    //     <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
-    //   </div>
-    // )
   } else if (status === 'idle') {
     return 'Submit a pokemon'
   } else if (status === 'pending') {
@@ -72,18 +61,15 @@ function PokemonInfo({pokemonName}) {
   }
 
   throw new Error('This should be impossible')
+}
 
-  // return (
-  //   <>
-  //     {!pokemonName ? (
-  //       <div> Submit a pokemon</div>
-  //     ) : !pokemon ? (
-  //       <PokemonInfoFallback name={pokemonName} />
-  //     ) : (
-  //       <PokemonDataView pokemon={pokemon}></PokemonDataView>
-  //     )}
-  //   </>
-  // )
+function ErrorFallback({error}) {
+  return (
+    <div role="alert">
+      There was an error:{' '}
+      <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
+    </div>
+  )
 }
 
 function App() {
@@ -98,7 +84,7 @@ function App() {
       <PokemonForm pokemonName={pokemonName} onSubmit={handleSubmit} />
       <hr />
       <div className="pokemon-info">
-        <ErrorBoundary key={pokemonName}>
+        <ErrorBoundary key={pokemonName} FallbackComponent={ErrorFallback}>
           <PokemonInfo pokemonName={pokemonName} />
         </ErrorBoundary>
       </div>
