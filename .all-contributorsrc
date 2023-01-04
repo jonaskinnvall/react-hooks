@@ -466,9 +466,46 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ImElan",
+      "name": "Elan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59192383?v=4",
+      "profile": "https://github.com/ImElan",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "MBehtemam",
+      "name": "Mohammad Bagher Ehtemam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1811124?v=4",
+      "profile": "http://about.me/mbehtemam",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "leggsimon",
+      "name": "Simon Legg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11544418?v=4",
+      "profile": "https://github.com/leggsimon",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "PhilippVujic",
+      "name": "Philipp Vujic",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28774924?v=4",
+      "profile": "https://github.com/PhilippVujic",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
